@@ -255,23 +255,7 @@ Ankit-Portfolio/
 
 ---
 
-## 👨‍🎨 Author
 
-### Ankit Kumar
-
-**Front-End Developer | BCA Student | JavaScript & REST API Enthusiast**
-
-I build responsive web applications and practical software projects while continuously learning and exploring modern technologies.
-
-📍 **Meerut, Uttar Pradesh, India**
-
-🎓 **BCA — Meerut Institute of Technology (2024–2027)**
-
-🐙 **GitHub:** https://github.com/tech-ankit-kumar
-
-💼 **LinkedIn:** https://www.linkedin.com/in/tech-ankit-kumar/
-
----
 
 ## 📄 License
 
