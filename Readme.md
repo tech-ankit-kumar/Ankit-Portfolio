@@ -5,34 +5,49 @@
 </p>
 
 <p align="center">
-  A modern, responsive developer portfolio showcasing my projects, technical skills, certifications, learning journey, and development notes.
+  A professional, responsive developer portfolio showcasing my projects, skills, certifications, learning journey, and development work.
 </p>
 
 <p align="center">
-  <a href="https://tech-ankit-kumar.github.io/">🌐 Live Portfolio</a> •
+  <a href="https://tech-ankit-kumar.github.io/Ankit-Portfolio/"><strong>🌐 LIVE DEMO</strong></a> •
   <a href="https://github.com/tech-ankit-kumar">🐙 GitHub</a> •
   <a href="https://www.linkedin.com/in/tech-ankit-kumar/">💼 LinkedIn</a>
 </p>
 
 ---
 
+## 🚀 Live Website
+
+### 🌐 [Visit My Live Portfolio](https://tech-ankit-kumar.github.io/Ankit-Portfolio/)
+
+My portfolio is deployed using **GitHub Pages** and is available online.
+
+**Live Demo:**  
+https://tech-ankit-kumar.github.io/Ankit-Portfolio/
+
+---
+
 ## ✨ About This Portfolio
 
-This portfolio is designed as a professional personal website for presenting my development work and technical journey in one place.
+This portfolio is my personal developer website, created to showcase my technical skills, software projects, certifications, education, and development journey.
 
-It focuses on:
+The website is designed with a modern responsive interface and focuses on providing recruiters, clients, collaborators, and visitors with a clear overview of my work.
 
-- Responsive and user-friendly UI
-- Front-end development projects
-- JavaScript and REST API work
-- Java desktop applications
-- Python learning and automation
-- Certifications and learning milestones
-- GitHub activity and open-source work
-- Developer notes and build logs
-- Internship and entry-level opportunities
+### Portfolio Highlights
 
-The portfolio also includes interactive animations, project filtering, certificate viewing, responsive navigation, theme support, GitHub activity integration, and a contact form.
+- 🎨 Modern and responsive UI
+- 📱 Mobile-friendly design
+- 🌙 Light/Dark appearance support
+- ✨ Smooth animations and interactive elements
+- 🔎 Project filtering
+- 🏆 Certificate viewer
+- 📝 Developer notes and build logs
+- 🐙 GitHub activity integration
+- 📊 Animated statistics
+- 📩 Contact section
+- ⬆️ Scroll progress and back-to-top interaction
+- ♿ Reduced-motion support
+- 🌐 GitHub Pages deployment
 
 ---
 
@@ -42,32 +57,26 @@ Hi, I'm **Ankit Kumar**, a BCA student and Front-End Developer based in **Meerut
 
 I am pursuing a **Bachelor of Computer Applications (BCA) at Meerut Institute of Technology (2024–2027)**.
 
-My primary focus is building responsive web experiences using **HTML5, CSS3, JavaScript, REST APIs, and modern browser APIs**. I also work on Java desktop applications and Python-based projects while continuously improving my development and problem-solving skills.
+My primary interests include building responsive web applications, working with JavaScript and REST APIs, creating practical software projects, and continuously exploring new technologies.
 
-I enjoy:
-
-- Building practical projects
-- Creating responsive interfaces
-- Working with APIs and browser technologies
-- Learning new development tools
-- Using Git and GitHub for project management
-- Understanding requirements and turning ideas into working products
-- Exploring AI and data engineering
+I also work with **Java and Python** and enjoy turning ideas into functional, user-friendly applications.
 
 ### 🎯 Current Focus
 
 - Front-End Web Development
-- JavaScript & REST APIs
+- JavaScript
+- REST API Integration
 - Python Projects
 - Data Engineering
 - Generative AI
-- Advanced REST API development
+- Advanced REST APIs
+- Practical software development
 
 ---
 
 ## 🛠️ Tech Stack
 
-### 💻 Languages
+### 💻 Programming Languages
 
 `HTML5` `CSS3` `JavaScript` `Python` `C++` `Java`
 
@@ -89,73 +98,76 @@ I enjoy:
 
 ### ⌨️ Typing Master Pro — Keystride
 
-A browser-based typing practice application designed to help beginners improve typing speed through structured lessons, guided drills, timed tests, mini-games, statistics, XP, and a completion certificate.
+A browser-based typing practice application designed to help users improve typing speed through structured lessons, guided drills, timed tests, mini-games, statistics, XP, and a completion certificate.
 
-**Tech:** HTML • CSS • JavaScript • Gamification
+**Tech:** HTML • CSS • JavaScript
 
-[View Repository](https://github.com/tech-ankit-kumar/typing-master-pro)
+🔗 [View Repository](https://github.com/tech-ankit-kumar/typing-master-pro)
 
 ---
 
 ### 🧾 Smart Invoice Generator
 
-A browser-based invoice generator that helps users create professional invoices with live preview, GST and discount fields, UPI QR payments, invoice history, multiple themes, and print/PDF export.
+A browser-based invoice generator with live preview, GST and discount calculations, UPI QR payments, invoice history, multiple themes, and print/PDF export.
 
-**Tech:** HTML • CSS • JavaScript • UPI QR • PDF/Print Export
+**Tech:** HTML • CSS • JavaScript
 
-[View Repository](https://github.com/tech-ankit-kumar/smart-invoice-generator)
+🔗 [View Repository](https://github.com/tech-ankit-kumar/smart-invoice-generator)
 
 ---
 
 ### 💸 Expense Wise
 
-A Java-based expense tracking application focused on making day-to-day spending easier to record, organize, and review.
+A Java-based expense tracking application designed to help users record, organize, and review their daily expenses.
 
-**Tech:** Java • OOP
+**Tech:** Java • OOP • Desktop Application
 
-[View Repository](https://github.com/tech-ankit-kumar/Expense-Wise)
+🔗 [View Repository](https://github.com/tech-ankit-kumar/Expense-Wise)
 
 ---
 
 ### 🏨 The Mayur Villa
 
-A desktop hotel reservation and management system designed to replace paper-based hotel records with a digital workflow.
+A desktop hotel reservation and management system created to digitally manage hotel operations.
 
-Features include:
-
+**Features:**
 - Login system
 - Dashboard
 - Room management
-- Housekeeping management
+- Housekeeping
 - Reservations
 - Online bookings
 - Billing
 - Bill printing
 
-**Tech:** Java Swing • Desktop Application • Billing
+**Tech:** Java Swing
 
-[View Repository](https://github.com/tech-ankit-kumar/The-Mayur-Villa)
+🔗 [View Repository](https://github.com/tech-ankit-kumar/The-Mayur-Villa)
 
 ---
 
-### 🌦️ More Projects
+## 📂 More Projects
 
-Other projects published on my GitHub include:
+Other projects available on my GitHub include:
 
-- Weather Dashboard Pro
-- Automatic File Organizer
-- Student Management System
-- Number Guessing Game
-- More experimental and learning projects
+- 🌦️ Weather Dashboard Pro
+- 📁 Automatic File Organizer
+- 🎓 Student Management System
+- 🎮 Number Guessing Game
+- ⌨️ Typing Master Pro
+- 🧾 Smart Invoice Generator
+- 💸 Expense Wise
+- 🏨 The Mayur Villa
 
-[Explore All Repositories](https://github.com/tech-ankit-kumar?tab=repositories)
+🔗 [Explore All My Repositories](https://github.com/tech-ankit-kumar?tab=repositories)
 
 ---
 
 ## 🎓 Education
 
 **Bachelor of Computer Applications (BCA)**  
-Meerut Institute of Technology, Meerut, Uttar Pradesh  
+Meerut Institute of Technology, Meerut, Uttar Pradesh
+
 **2024 – 2027 (Expected)**
 
 ---
@@ -171,91 +183,75 @@ Meerut Institute of Technology, Meerut, Uttar Pradesh
 
 ## 📈 Development Journey
 
-| Year / Period | Milestone |
+| Period | Milestone |
 |---|---|
 | **2024** | Started BCA at Meerut Institute of Technology |
 | **Internship** | Completed Python Development Internship at Securozen |
 | **Sep 2026** | Started publishing development projects on GitHub |
 | **22 Sep 2026** | Completed AI-focused certifications |
-| **Present** | Building projects and strengthening Front-End, REST API, Python, AI and Data Engineering skills |
-| **2027** | Expected BCA graduation and pursuing professional opportunities |
+| **Present** | Building projects and improving Front-End, REST API, Python, AI and Data Engineering skills |
+| **2027** | Expected BCA graduation |
 
 ---
 
 ## 📝 Developer Notes
 
-The portfolio includes a small build-log/notes section covering practical development topics such as:
+The portfolio includes a developer notes section covering practical development topics such as:
 
-- Clean `async/await` patterns with the Fetch API
-- Loading and fallback UI
-- CSS techniques for polished interfaces
-- Responsive design practices
+- Fetch API and `async/await`
+- API loading and fallback states
+- Responsive CSS techniques
+- LocalStorage
+- Browser-based application development
 - Building the Smart Invoice Generator
-- LocalStorage and browser-based application patterns
+- Practical JavaScript development
 
 ---
 
-## 🎨 Portfolio Features
+## 📸 Portfolio Preview
 
-- ✅ Responsive design
-- ✅ Mobile-friendly navigation
-- ✅ Modern animated UI
-- ✅ Light/dark appearance support
-- ✅ Interactive project filtering
-- ✅ Project showcase cards
-- ✅ Certificate viewer with navigation
-- ✅ Developer notes with modal reading experience
-- ✅ GitHub activity integration
-- ✅ Animated statistics
-- ✅ Contact form
-- ✅ Scroll progress and back-to-top interaction
-- ✅ Reduced-motion support
-- ✅ Performance-conscious mobile behavior
-- ✅ GitHub Pages deployment ready
+The repository also contains project images and portfolio assets that can be used for showcasing the work directly on GitHub.
 
 ---
 
-## 📂 Suggested Project Structure
+## 📁 Repository Structure
 
 ```text
-portfolio/
-├── index.html
+Ankit-Portfolio/
+│
+├── Ankit Kumar - Professional Portfolio.html
+├── Ankit_Kumar_Resume.pdf
+├── Readme.md
 ├── photo.jpg
-├── resume.pdf
 ├── og-image.png
-├── projects/
-│   ├── typing-master-pro.png
-│   ├── smart-invoice-generator.png
+│
+├── Projects/
 │   ├── Expense-Wise.png
-│   └── The-Mayur-Villa.png
-├── certificates/
-│   ├── Google generative ai Certificate.jpg
-│   ├── Reliance Ai Engineer.jpg
-│   ├── Skill India Ai engineer.jpg
-│   └── Securozen_Certificate_*.jpg
-└── README.md
+│   ├── The-Mayur-Villa.png
+│   ├── smart-invoice-generator.png
+│   └── typing-master-pro.png
+│
+└── certificates/
+    ├── Google generative ai Certificate.jpg
+    ├── Google generative ai Certificate.pdf
+    ├── Reliance Ai Engineer.jpg
+    ├── Reliance Ai Engineer.pdf
+    ├── Securozen Certificate.jpg
+    ├── Securozen Certificate.pdf
+    ├── Skill India Ai engineer.jpg
+    └── Skill India Ai engineer.pdf
 ```
 
 ---
 
-## 🌐 Live Portfolio
+## 🌐 Links
 
-**Portfolio:** https://tech-ankit-kumar.github.io/
-
-The portfolio is designed to work as a professional developer profile for recruiters, internship opportunities, collaborators, and anyone interested in my projects.
-
----
-
-## 📫 Connect With Me
-
-**Ankit Kumar**  
-📍 Meerut, Uttar Pradesh, India
-
-- 🐙 GitHub: https://github.com/tech-ankit-kumar
-- 💼 LinkedIn: https://www.linkedin.com/in/tech-ankit-kumar/
-- 📧 Email: ankit20136@gmail.com
-
-> 💡 **Building, Learning, and Improving — One Project at a Time.**
+| Platform | Link |
+|---|---|
+| 🌐 Live Portfolio | [Open Website](https://tech-ankit-kumar.github.io/Ankit-Portfolio/) |
+| 🐙 GitHub | [tech-ankit-kumar](https://github.com/tech-ankit-kumar) |
+| 💼 LinkedIn | [Ankit Kumar](https://www.linkedin.com/in/tech-ankit-kumar/) |
+| 📧 Email | ankit20136@gmail.com |
 
 ---
 
@@ -265,11 +261,15 @@ The portfolio is designed to work as a professional developer profile for recrui
 
 **Front-End Developer | BCA Student | JavaScript & REST API Enthusiast**
 
-I build responsive web applications and practical software projects while continuously learning and exploring new technologies.
+I build responsive web applications and practical software projects while continuously learning and exploring modern technologies.
 
-**GitHub:** https://github.com/tech-ankit-kumar  
-**Location:** Meerut, Uttar Pradesh, India  
-**Education:** BCA — Meerut Institute of Technology (2024–2027)
+📍 **Meerut, Uttar Pradesh, India**
+
+🎓 **BCA — Meerut Institute of Technology (2024–2027)**
+
+🐙 **GitHub:** https://github.com/tech-ankit-kumar
+
+💼 **LinkedIn:** https://www.linkedin.com/in/tech-ankit-kumar/
 
 ---
 
@@ -277,11 +277,11 @@ I build responsive web applications and practical software projects while contin
 
 This portfolio is a personal project created by **Ankit Kumar**.
 
-You are welcome to explore the code for learning and reference. Please do not present the portfolio, personal information, projects, or original content as your own.
+You are welcome to explore the source code for learning and reference. Please do not present the portfolio, personal information, projects, or original content as your own.
 
 ---
 
 <p align="center">
-  <strong>⭐ Thanks for visiting my portfolio!</strong><br>
-  Building • Learning • Improving
+  <strong>⭐ Thanks for visiting my portfolio!</strong><br><br>
+  <strong>Building • Learning • Improving</strong>
 </p>
