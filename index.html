@@ -1097,7 +1097,6 @@ body.intro-lock{overflow:hidden}
   function notifyDone() { try { document.dispatchEvent(new CustomEvent('intro:done')); } catch (e) {} }
 
   var intro = document.getElementById('intro');
-  try { if (intro && sessionStorage.getItem('ak-intro')) { intro.parentNode.removeChild(intro); intro = null; } } catch (e) {}
   if (intro) {
     var stage  = document.getElementById('introStage');
     var bubble = document.getElementById('introBubble');
@@ -1109,7 +1108,6 @@ body.intro-lock{overflow:hidden}
       if (closed || locked) return;
       locked = true; closed = true;
       timers.forEach(clearTimeout); timers = [];
-      try { sessionStorage.setItem('ak-intro','1'); } catch (e) {}
       intro.classList.add('hide');
       unlockBody(); notifyDone();
       setTimeout(function () { if (intro.parentNode) intro.parentNode.removeChild(intro); }, 1050);
