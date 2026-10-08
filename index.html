@@ -88,8 +88,9 @@ h1{font-size:clamp(40px,8vw,88px);font-weight:800;margin:22px 0 14px;letter-spac
 #hero.enter .rv:nth-of-type(5){animation-delay:.65s}
 #hero.enter .rv:nth-of-type(6){animation-delay:.80s}
 @keyframes heroIn{from{opacity:0;transform:translateY(38px) scale(.96);filter:blur(6px)}to{opacity:1;transform:none;filter:blur(0)}}
-#workingOn{margin-top:36px;display:inline-flex;align-items:center;gap:12px;padding:12px 18px;border-radius:14px;background:var(--bg2);border:1px solid var(--line);box-shadow:0 8px 30px #0000000d;max-width:680px;transition:border-color .3s,transform .3s;flex-wrap:wrap}
+#workingOn{margin-top:36px;display:inline-flex;align-items:center;gap:12px;padding:12px 18px;border-radius:14px;background:var(--bg2);border:1px solid var(--line);box-shadow:0 8px 30px #0000000d;max-width:680px;transition:border-color .3s,transform .3s;flex-wrap:wrap;cursor:pointer}
 #workingOn:hover{border-color:var(--a);transform:translateY(-2px)}
+#workingOn:active{transform:scale(.985)}
 #workingOn .pulse-dot{width:9px;height:9px;border-radius:50%;background:#22c55e;flex:none;animation:pulse 1.6s infinite}
 #workingOn .wo-txt{font-size:14px;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
 #workingOn .wo-txt b{color:var(--ink);font-weight:600}
@@ -742,7 +743,7 @@ body.intro-lock{overflow:hidden}
     <a class="btn" href="https://github.com/tech-ankit-kumar" target="_blank" rel="noopener">GitHub profile</a>
     <a class="btn" href="#contact">Contact me</a>
   </div>
-  <div id="workingOn" class="rv" title="Latest activity from GitHub">
+  <div id="workingOn" class="rv" title="Click to refresh GitHub activity">
     <span class="pulse-dot"></span>
     <span class="gh-dots" id="ghDots" aria-hidden="true"></span>
     <span class="wo-txt" id="woTxt">Loading latest activity from GitHub…</span>
@@ -1441,34 +1442,53 @@ body.intro-lock{overflow:hidden}
     counters.forEach(function (el) { co.observe(el); });
   })();
 
-  /* LIVE GITHUB + DOTS */
+  /* ============================================================
+     LIVE GITHUB + DOTS  —  FIXED VERSION
+     - events API ki jagah repos?sort=pushed + /commits use karta hai
+     - cache 2 min (pehle 30 min tha)
+     - box pe click => force refresh
+     ============================================================ */
   (function () {
-    var GH_USER = 'tech-ankit-kumar';
-    var cacheKey = 'ak-gh-' + GH_USER;
-    var CACHE_MS = 1000 * 60 * 30;
+    var GH_USER  = 'tech-ankit-kumar';
+    var CACHE_KEY = 'ak-gh-v2-' + GH_USER;
+    var CACHE_MS  = 1000 * 60 * 2;
     var dotsWrap = document.getElementById('ghDots');
+    var woTxt    = document.getElementById('woTxt');
+    var woTime   = document.getElementById('woTime');
+    var box      = document.getElementById('workingOn');
+    var API      = 'https://api.github.com';
+    var OPTS     = { cache: 'no-store', headers: { 'Accept': 'application/vnd.github+json' } };
 
+    function esc(s) {
+      return String(s).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
     function getCache() {
       try {
-        var raw = sessionStorage.getItem(cacheKey);
+        var raw = sessionStorage.getItem(CACHE_KEY);
         if (!raw) return null;
-        var obj = JSON.parse(raw);
-        if (Date.now() - obj.t > CACHE_MS) return null;
-        return obj.d;
+        var o = JSON.parse(raw);
+        return (Date.now() - o.t > CACHE_MS) ? null : o.d;
       } catch (e) { return null; }
     }
-    function setCache(d) { try { sessionStorage.setItem(cacheKey, JSON.stringify({ t: Date.now(), d: d })); } catch (e) {} }
+    function setCache(d) { try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ t: Date.now(), d: d })); } catch (e) {} }
+    function clearCache() { try { sessionStorage.removeItem(CACHE_KEY); } catch (e) {} }
+
+    function timeAgo(iso) {
+      var s = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
+      if (s < 60) return 'just now';
+      if (s < 3600) return Math.floor(s / 60) + 'm ago';
+      if (s < 86400) return Math.floor(s / 3600) + 'h ago';
+      if (s < 2592000) return Math.floor(s / 86400) + 'd ago';
+      return Math.floor(s / 2592000) + 'mo ago';
+    }
 
     function renderDots(events) {
       if (!dotsWrap) return;
-      var today = new Date();
-      today.setHours(0,0,0,0);
+      var today = new Date(); today.setHours(0, 0, 0, 0);
       var days = [];
-      for (var i = 6; i >= 0; i--) {
-        var d = new Date(today);
-        d.setDate(d.getDate() - i);
-        days.push(d);
-      }
+      for (var i = 6; i >= 0; i--) { var d = new Date(today); d.setDate(d.getDate() - i); days.push(d); }
       var counts = days.map(function (d) {
         var next = new Date(d); next.setDate(next.getDate() + 1);
         return events.filter(function (e) {
@@ -1491,11 +1511,9 @@ body.intro-lock{overflow:hidden}
         var repoEl = document.querySelector('[data-key="repos"]');
         if (repoEl) repoEl.setAttribute('data-n', d.public_repos);
       }
-      var woTxt = document.getElementById('woTxt');
-      var woTime = document.getElementById('woTime');
-      if (woTxt && d.latestEvent) {
-        woTxt.innerHTML = 'Latest activity: <b>' + d.latestEvent.msg + '</b>';
-        if (woTime) woTime.textContent = d.latestEvent.when;
+      if (woTxt && d.latest) {
+        woTxt.innerHTML = 'Latest activity: <b>' + esc(d.latest.msg) + '</b>';
+        if (woTime) woTime.textContent = timeAgo(d.latest.date);
       } else if (woTxt) {
         woTxt.innerHTML = 'Building, learning and shipping — one project at a time.';
         if (woTime) woTime.textContent = 'now';
@@ -1503,42 +1521,80 @@ body.intro-lock{overflow:hidden}
       if (d.events) renderDots(d.events);
     }
 
-    var cached = getCache();
-    if (cached) { applyData(cached); return; }
-
-    var userP = fetch('https://api.github.com/users/' + GH_USER)
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .catch(function () { return null; });
-    var evP = fetch('https://api.github.com/users/' + GH_USER + '/events/public?per_page=30')
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .catch(function () { return null; });
-
-    Promise.all([userP, evP]).then(function (arr) {
-      var user = arr[0], ev = arr[1] || [];
-      var data = { public_repos: user ? user.public_repos : null, events: ev, latestEvent: null };
-      if (ev.length) {
-        var e0 = ev[0];
-        var repo = (e0.repo && e0.repo.name) ? e0.repo.name.split('/').pop() : 'repo';
-        var msg = '';
-        if (e0.type === 'PushEvent' && e0.payload && e0.payload.commits && e0.payload.commits.length) {
-          msg = e0.payload.commits[0].message.split('\n')[0].slice(0, 60);
-        } else if (e0.type === 'CreateEvent') {
-          msg = 'Created ' + (e0.payload.ref_type || 'thing') + ' in ' + repo;
-        } else {
-          msg = e0.type.replace('Event', '') + ' on ' + repo;
-        }
-        data.latestEvent = { msg: msg, when: timeAgo(e0.created_at) };
+    function load(force) {
+      if (!force) {
+        var c = getCache();
+        if (c) { applyData(c); return; }
       }
-      setCache(data);
-      applyData(data);
-    });
+      if (force) {
+        clearCache();
+        if (woTxt) woTxt.textContent = 'Refreshing from GitHub…';
+        if (woTime) woTime.textContent = '';
+      }
 
-    function timeAgo(iso) {
-      var s = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
-      if (s < 60) return s + 's ago';
-      if (s < 3600) return Math.floor(s / 60) + 'm ago';
-      if (s < 86400) return Math.floor(s / 3600) + 'h ago';
-      return Math.floor(s / 86400) + 'd ago';
+      var userP = fetch(API + '/users/' + GH_USER, OPTS)
+        .then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+
+      var reposP = fetch(API + '/users/' + GH_USER + '/repos?sort=pushed&direction=desc&per_page=1', OPTS)
+        .then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; });
+
+      var eventsP = fetch(API + '/users/' + GH_USER + '/events/public?per_page=30', OPTS)
+        .then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; });
+
+      Promise.all([userP, reposP, eventsP]).then(function (arr) {
+        var user = arr[0], repos = arr[1] || [], events = arr[2] || [];
+        var data = { public_repos: user ? user.public_repos : null, events: events, latest: null };
+        var newest = repos[0] || null;
+
+        if (newest) {
+          data.latest = {
+            msg: 'Pushed to ' + newest.name,
+            date: newest.pushed_at || newest.updated_at
+          };
+          applyData(data);
+
+          fetch(API + '/repos/' + GH_USER + '/' + newest.name + '/commits?per_page=1', OPTS)
+            .then(function (r) { return r.ok ? r.json() : []; })
+            .then(function (commits) {
+              if (commits && commits[0]) {
+                var c = commits[0];
+                data.latest = {
+                  msg: (c.commit && c.commit.message ? c.commit.message.split('\n')[0] : 'New commit').slice(0, 70),
+                  date: (c.commit && c.commit.author && c.commit.author.date) || data.latest.date
+                };
+                applyData(data);
+              }
+              setCache(data);
+            })
+            .catch(function () { setCache(data); });
+
+        } else if (events.length) {
+          var e0 = events[0];
+          var repo = (e0.repo && e0.repo.name) ? e0.repo.name.split('/').pop() : 'repo';
+          var msg;
+          if (e0.type === 'PushEvent' && e0.payload && e0.payload.commits && e0.payload.commits.length) {
+            msg = e0.payload.commits[0].message.split('\n')[0].slice(0, 70);
+          } else if (e0.type === 'CreateEvent') {
+            msg = 'Created ' + (e0.payload.ref_type || 'repo') + ' · ' + repo;
+          } else {
+            msg = e0.type.replace('Event', '') + ' on ' + repo;
+          }
+          data.latest = { msg: msg, date: e0.created_at };
+          setCache(data);
+          applyData(data);
+        } else {
+          setCache(data);
+          applyData(data);
+        }
+      });
+    }
+
+    load(false);
+
+    if (box) {
+      box.style.cursor = 'pointer';
+      box.title = 'Click to refresh GitHub activity';
+      box.addEventListener('click', function () { load(true); });
     }
   })();
 
@@ -1765,7 +1821,6 @@ body.intro-lock{overflow:hidden}
 })();
 </script>
 
-
 <!-- SCRIPT 4: SEND EMAIL (Gmail web on desktop, mail app on mobile) -->
 <script>
 (function () {
@@ -1775,13 +1830,12 @@ body.intro-lock{overflow:hidden}
   var TO = 'ankit20136@gmail.com', SUBJECT = 'Hello Ankit', BODY = 'Hi Ankit,\n\n';
   var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   link.addEventListener('click', function (e) {
-    if (isMobile) return; // mailto opens Gmail / default mail app on phones
+    if (isMobile) return;
     e.preventDefault();
     var url = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(TO) +
               '&su=' + encodeURIComponent(SUBJECT) + '&body=' + encodeURIComponent(BODY);
     var w = window.open(url, '_blank', 'noopener');
     if (!w) {
-      // popup blocked: copy address as fallback
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(TO).catch(function () {});
       if (window.akToast) window.akToast('Popup blocked. Email copied: ' + TO);
     }
